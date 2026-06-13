@@ -35,12 +35,12 @@ const Dashboard = () => {
 
   const fetchAppointments = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/appointments', {
+      const res = await axios.get('https://babershopt1.onrender.com/api/appointments', {
         params: { status: statusFilter, search }
       });
       setAppointments(res.data);
 
-      const statsRes = await axios.get('http://localhost:5000/api/appointments/stats');
+      const statsRes = await axios.get('https://babershopt1.onrender.com/api/appointments/stats');
       setStats(statsRes.data);
     } catch (error) {
       console.error('Error fetching data', error);
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/appointments/${id}`, { status: newStatus });
+      await axios.put(`https://babershopt1.onrender.com/api/appointments/${id}`, { status: newStatus });
       fetchAppointments();
     } catch (error) {
       console.error('Error updating status', error);
@@ -59,7 +59,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/appointments/${id}`);
+        await axios.delete(`https://babershopt1.onrender.com/api/appointments/${id}`);
         fetchAppointments();
       } catch (error) {
         console.error('Error deleting appointment', error);
