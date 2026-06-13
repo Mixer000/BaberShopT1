@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,10 @@ const Navbar = () => {
           <a href="#booking" className="px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-dark transition-all duration-300 rounded uppercase tracking-widest text-sm font-semibold hover-glow">
             Reservar
           </a>
+          <Link to="/admin/login" className="flex items-center gap-2 text-sm uppercase tracking-widest text-white/70 hover:text-primary transition-colors border-l border-white/20 pl-6 ml-2">
+            <User size={16} />
+            <span className="hidden lg:inline">Barberos</span>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -72,6 +77,14 @@ const Navbar = () => {
             >
               Reservar
             </a>
+            <Link 
+              to="/admin/login"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-lg uppercase tracking-widest text-white/70 hover:text-primary transition-colors pt-4 border-t border-white/10 w-full justify-center"
+            >
+              <User size={20} />
+              Portal Barberos
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
